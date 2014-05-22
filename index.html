@@ -1,0 +1,262 @@
+<html>
+<head>
+<link href='http://fonts.googleapis.com/css?family=arial' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=arial' rel='stylesheet' type='text/css'>
+<style type='text/css'>
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+body, html {
+  height:100%;
+}
+body {
+  background-image: url('./images/underconstruction.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #fff;
+  color: #fff;
+  font-family: 'arial', sans-serif;
+  
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.remote-link {
+  cursor: pointer;
+}
+#page {
+  position: relative;
+  margin: 0px auto;
+  width: 600px;
+  height: 100%;
+}
+#title {
+  margin: 10px auto 10px auto;
+  font-family: 'arial', sans-serif;
+  font-size: 100px;
+  font-variant: small-caps;
+  letter-spacing: 5px;
+  text-align: center;
+  color: #cd0074;
+  text-shadow: 2px 2px 2px rgba(10, 10, 10, 0.2);
+}
+#title.min {
+  margin: 10px auto 10px auto;
+  font-family: 'arial', sans-serif;
+  font-size: 100px;
+  font-variant: small-caps;
+  letter-spacing: 5px;
+  text-align: center;
+  color: #cd0074;
+  text-shadow: 2px 2px 2px rgba(10, 10, 10, 0.2);
+}
+#menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  padding: 20px;
+  border: 2px solid #000000;
+  background: rgba(251, 177, 56, 0.8);
+  border-radius: 20px;
+}
+#menu ul {
+  list-style: none;
+  padding-left: 0px;
+}
+#menu ul li {
+  position: relative;
+  cursor: pointer;
+  letter-spacing: 3px;
+  font-size: 15pt;
+  color: #000000;
+  padding: 10px 50px 10px 10px;
+}
+#menu ul li:last-child {
+  margin-bottom: 0;
+}
+.bgfade {
+  display: none;
+  position: absolute;
+  padding: 10px 50px 10px 10px;
+  top: -2;
+  left: -2;
+  bottom: 0;
+  width: 100px;
+  color: #cd0074;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  border: 2px solid rgba(210, 249, 231, 1);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+}
+#menupic {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  left: 200px;
+  bottom: 20px;
+  /* image dimensions {x=380, y=308} */
+  background: url('./images/menu-pic.png');
+  background-position: right bottom;
+}
+#feeds {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 505px;
+  height: 350px;
+  margin: 10px auto;
+}
+.twitter-feed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 2px solid #000000;
+}
+.facebook-feed {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 2px solid #000000;
+}
+.footer {
+  position: absolute;
+  top: 885px;
+  left: 0px;
+  right: 0px;
+  text-align: center;
+  font-size: 12pt;
+  color: #000000;
+  letter-spacing: 3px;
+  margin: 0px auto;
+  padding: 10px;
+  border: 2px solid #000000;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 4px;
+}
+.large-shadow {
+  box-shadow: 10px 10px 15px rgba(78, 6, 35, 0.7);
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script>
+window.onload = function(){
+  $('.remote-link').click(function(){
+    var href = $(this).data('href');
+    if(href)
+      window.location = href;
+  });
+  $('#magic').click(function(){
+    minimize();
+  });
+  $('#menu ul li').each(function(){
+    $(this).data('txt', $(this).text());
+    $(this).hover(
+      function () {
+        $(this).append('<div class="bgfade">' + $(this).data('txt') + '</div>');
+        $(this).find('div:last').fadeIn(200);
+      }, 
+      function () {
+        $(this).find('div.bgfade').fadeOut(200, function(){
+          $(this).remove();
+        });
+      }
+    );
+  });
+};
+
+minimize = new function() {
+  console.log('lala');
+};
+</script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-34791795-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+<body>
+
+<Br>
+<center>
+<font face="century gothic" size="6" color="red">
+Full website available soon!
+</font>
+<br>
+<br>
+<u>
+<font face="century gothic" size="4" color="black">
+<a href="http://drassenov.deviantart.com"><b> Art Gallery HERE</b></a>
+<br>
+<a href="http://drassenov.deviantart.com/gallery/44352765"><b>Read LONE STAR HERE</b></a></u>
+<br>
+</font>
+</center> 
+
+
+
+
+<div id='page'>
+<!--
+  <div id='title' class='remote-link' data-href='./'>Dr. Assenov</div>
+  <div id='menu' class='large-shadow'>
+    <ul>
+      <li class='remote-link' data-href='./artwork.html'>Artwork</li>
+	  <li class='remote-link' data-href='./comics.html'>Comics</li>
+      <li class='remote-link' data-href='./photos.html'>Photos</li>
+      <li class='remote-link' data-href='./videos.html'>Videos</li>
+      <li class='remote-link' data-href='./blog.html'>Blog</li>
+      <li class='remote-link' data-href='./about.html'>About</li>
+      <li class='remote-link' data-href='./contact.html'>Contact</li>
+    </ul>
+    <div id='menupic'></div>
+
+  </div>
+	  --!>
+  
+  
+  
+  <div id='feeds'>
+    <div class='twitter-feed large-shadow' style='margin-right: 10px;'>
+      <a class="twitter-timeline" href="https://twitter.com/drassenov" data-widget-id="247446382322008064" width="290" height="348" style='margin-left: 100px;'>Tweets by @drassenov</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </div>
+    <div class='facebook-feed large-shadow'>
+      <div id="fb-root"></div>
+      <div class="fb-like-box" data-href="http://www.facebook.com/pages/DrAssenov/120289188056607" data-width="290" data-height="350" data-show-faces="true" data-border-color="#ffffff" data-stream="true" data-header="true">
+      </div>
+    </div>
+  </div>
+  <div class='footer large-shadow'>
+    <a id='magic' href='#'>2014</a> &copy; Vanessa Baumann ::
+    Website by <a href='http://www.steelendeavor.com'>Travis Steel</a>
+  </div>
+</div>
+</body>
+</html>
