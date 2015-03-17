@@ -34,13 +34,17 @@
       }
       div.pane {
         position: absolute;
-        background-image: url('planet.png');
+        cursor: pointer;
+      }
+      div.image-pane {
         background-position: center;
         background-size: contain;
+      }
+      div.text-pane {
+        font-family: sans-serif;
+        font-weight: 400;
         color: #FFF;
         text-align: center;
-        font-size: 1em;
-        cursor: pointer;
       }
       .inverted {
         -webkit-filter: invert(100%) !important;
@@ -77,21 +81,22 @@
       
       // Pane definition (with default values)
       var Pane = function(){
+        this.type = 'image'; // or 'text'
         this.depth = 1;
         this.x = 0; // relative to canvas center
         this.y = 0; // relative to canvas center
         this.width = 100;
         this.height = 100;
-        this.image = 'planet.png';
+        this.image = null;
       };
 
       // function that generates a pane with random depth and position
-      var randomPane = function() {
+      var randomImagePane = function() {
         var pane = new Pane();
         pane.depth = Math.round(Math.random() * maxDepth); // rounding because z-index must be an integer
-        pane.text = ""; //pane.depth;
         pane.x = (Math.random() * spread) - (spread / 2);
         pane.y = (Math.random() * spread) - (spread / 2);
+        pane.image = 'planet.png';
         
         return pane;
       };
@@ -100,41 +105,76 @@
       var centerX = $('.canvas').width() / 2;
       var centerY = $('.canvas').height() / 2;
       
-      // generate random panes
+      // maintain list of panes (just for initialization)
+      // once these are added to the DOM as <div>s this array isn't needed
       var panes = [];
+      
+      // generate random image panes
       for(var i = 0; i < numPanesToGenerate; i++)
-        panes.push(randomPane());
+        panes.push(randomImagePane());
+      
+      // manually configure some text panes
+      var textPane;
+      
+      textPane = new Pane();
+      textPane.type = 'text';
+      textPane.text = "LSSS";
+      textPane.depth = 7;
+      textPane.fontSize = 80;
+      textPane.x = 0;
+      textPane.y = -150;
+      panes.push(textPane);
+      
+      textPane = new Pane();
+      textPane.type = 'text';
+      textPane.text = "Because sometimes you just have to SPACE";
+      textPane.depth = 4;
+      textPane.fontSize = 8;
+      textPane.x = -30;
+      textPane.y = 40;
+      panes.push(textPane);
       
       // add panes to the DOM
       for(var i = 0; i < panes.length; i++) {
-        var pane = $('<div>');
-        pane.addClass('pane');
-        pane.data('depth',panes[i].depth);
-        pane.text(panes[i].text);
-        pane.css({
-          'width' : panes[i].width + "px",
-          'height' : panes[i].height + "px",
-          'left' : (centerX + panes[i].x - (panes[i].width / 2)) + "px",
-          'top' : (centerY + panes[i].y - (panes[i].height / 2)) + "px",
-          'background-image' : 'url("' + panes[i].image + '")',
-          'z-index' : 9999 - panes[i].depth,
-          'font-size' : (4 * (maxDepth - panes[i].depth) / maxDepth) + "em"
-        });
+        var pane = panes[i];
+        var div = $('<div>');
+        div.addClass('pane');
+        div.data('depth',pane.depth);
+        var css = {
+          'z-index' : 9999 - pane.depth,
+          'width' : pane.width + "px",
+          'height' : pane.height + "px",
+          'left' : (centerX + pane.x - (pane.width / 2)) + "px",
+          'top' : (centerY + pane.y - (pane.height / 2)) + "px"
+        };
+        
+        if(pane.type === 'text') {
+          div.addClass('text-pane');
+          div.text(pane.text);
+          css['font-size'] = pane.fontSize + 'em';
+        }
+        
+        if(pane.type === 'image') {
+          div.addClass('image-pane');
+          css['background-image'] = 'url("' + pane.image + '")';
+        }
+        
+        div.css(css);
         
         // register a 'click' handler for the pane (invert the colors)
-        pane.click(function(event){
+        div.click(function(event){
           $(this).toggleClass('inverted');
         });
         
         // register a 'hover' handler for the pane (greyscale)
-        pane.hover(function(event){
+        div.hover(function(event){
           $(this).addClass('half-inverted');
         }, function(event){
           $(this).removeClass('half-inverted');
         });
         
         // append the pane to the canvas
-        $('.canvas').append(pane);
+        $('.canvas').append(div);
       }
       
       // bind the 'mousewheel' (change perspective's zoom)
