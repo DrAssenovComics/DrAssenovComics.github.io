@@ -1,0 +1,193 @@
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0;
+      }
+      div.container {
+        margin: 0;
+        position: relative;
+        background-color: #000;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 1px solid #ddd;
+        overflow: hidden;
+        cursor: crosshair;
+      }
+      div.canvas {
+        position: absolute;
+        left: 0%;
+        top: 0%;
+        width: 100%;
+        height: 100%;
+      }
+      div.readout {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        font-family: monospace;
+        color: #FFF;
+        z-index: 999;
+        padding: 10px;
+      }
+      div.pane {
+        position: absolute;
+        background-image: url('planet.png');
+        background-position: center;
+        background-size: contain;
+        color: #FFF;
+        text-align: center;
+        font-size: 1em;
+        cursor: pointer;
+      }
+      .inverted {
+        -webkit-filter: invert(100%) !important;
+      }
+      .half-inverted {
+        -webkit-filter: grayscale(100%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="readout">READOUT</div>
+      <div class="canvas">
+        <!--<div class="pane"></div>-->
+      </div>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script>
+    $(function() {
+      var numPanesToGenerate = 50;
+      var spread = 1000; // how far to deviate from center (linear, not radial)
+      var maxDepth = 8; // 1: closest, maxDepth-1: most fartherest
+      
+      // maintain the state of the canvas perspective
+      var perspective = {
+        // controlled by mouse position
+        'focusX' : 0,
+        'focusY' : 0,
+        
+        // controlled by mouse scroll wheel
+        'zoom': 1
+      };
+      
+      // Pane definition (with default values)
+      var Pane = function(){
+        this.depth = 1;
+        this.x = 0; // relative to canvas center
+        this.y = 0; // relative to canvas center
+        this.width = 100;
+        this.height = 100;
+        this.image = 'planet.png';
+      };
+
+      // function that generates a pane with random depth and position
+      var randomPane = function() {
+        var pane = new Pane();
+        pane.depth = Math.round(Math.random() * maxDepth); // rounding because z-index must be an integer
+        pane.text = ""; //pane.depth;
+        pane.x = (Math.random() * spread) - (spread / 2);
+        pane.y = (Math.random() * spread) - (spread / 2);
+        
+        return pane;
+      };
+
+      // get canvas center
+      var centerX = $('.canvas').width() / 2;
+      var centerY = $('.canvas').height() / 2;
+      
+      // generate random panes
+      var panes = [];
+      for(var i = 0; i < numPanesToGenerate; i++)
+        panes.push(randomPane());
+      
+      // add panes to the DOM
+      for(var i = 0; i < panes.length; i++) {
+        var pane = $('<div>');
+        pane.addClass('pane');
+        pane.data('depth',panes[i].depth);
+        pane.text(panes[i].text);
+        pane.css({
+          'width' : panes[i].width + "px",
+          'height' : panes[i].height + "px",
+          'left' : (centerX + panes[i].x - (panes[i].width / 2)) + "px",
+          'top' : (centerY + panes[i].y - (panes[i].height / 2)) + "px",
+          'background-image' : 'url("' + panes[i].image + '")',
+          'z-index' : 9999 - panes[i].depth,
+          'font-size' : (4 * (maxDepth - panes[i].depth) / maxDepth) + "em"
+        });
+        
+        // register a 'click' handler for the pane (invert the colors)
+        pane.click(function(event){
+          $(this).toggleClass('inverted');
+        });
+        
+        // register a 'hover' handler for the pane (greyscale)
+        pane.hover(function(event){
+          $(this).addClass('half-inverted');
+        }, function(event){
+          $(this).removeClass('half-inverted');
+        });
+        
+        // append the pane to the canvas
+        $('.canvas').append(pane);
+      }
+      
+      // bind the 'mousewheel' (change perspective's zoom)
+      $('.container').bind('mousewheel', function(event){
+        var canvas = $(this).find('.canvas');
+        
+        if(event.originalEvent.wheelDelta / 120 > 0)
+          perspective.zoom = perspective.zoom * 1.1;
+        else
+          perspective.zoom = perspective.zoom * 0.9;
+        
+        // redraw
+        draw();
+      });
+
+      // bind 'mousemove' event (change perspetive's focus position)
+      $('.container').on('mousemove',function(event){
+        var offset = $('.container').offset();
+        perspective.focusX = event.pageX - offset.left - ($('.container').width() / 2); // relative to center of container
+        perspective.focusY = event.pageY - offset.top - ($('.container').height() / 2); // relative to center of container
+        
+        // redraw
+        draw();
+      });
+      
+      // redraw canvas using current perspective
+      var draw = function(){
+        // print perspective values
+        $('.readout').html("focus x: " + perspective.focusX + "<br>focus y: " + perspective.focusY + "<br>zoom: " + perspective.zoom);
+        
+        var centerX = $('.container').width() / 2;
+        var centerY = $('.container').height() / 2;
+        
+        // translate and scale each pane based on the current perspective
+        $('.pane').each(function(index){
+          var pane = $(this);
+          var depth = pane.data('depth');
+          // depth interpolation
+          var interp = (maxDepth - depth) / maxDepth;
+          var scale = perspective.zoom * 0.5 * interp;
+          var translationScalar = interp * .4;
+          var translateX = -perspective.focusX * translationScalar;
+          var translateY = -perspective.focusY * translationScalar;
+          translateX = translateX + ((pane.css('left').replace("px","") - centerX) * (perspective.zoom - 1));
+          translateY = translateY + ((pane.css('top').replace("px","") - centerY) * (perspective.zoom - 1));
+          // apply the transformation
+          pane.css({
+            '-webkit-transform':'translate(' + translateX + 'px,' + translateY + 'px) scale(' + scale + ',' + scale + ')'
+          });
+        });
+      };
+
+      draw(0, 0);
+    });
+  </script>
+</html>
