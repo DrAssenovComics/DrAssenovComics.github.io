@@ -8,3 +8,9 @@ live at [drassenov.com](http://drassenov.com)
   - [example query](http://www.asterank.com/api/asterank?query={%22e%22:{%22$lt%22:0.1},%22i%22:{%22$lt%22:4},%22a%22:{%22$lt%22:1.6,%22$gt%22:1.4}}&limit=10)
   - based on [this CGI version](http://ssd.jpl.nasa.gov/sbdb.cgi)
 - [Inner Solar System Orbit](http://ssd.jpl.nasa.gov/?ss_inner)
+
+### gists
+
+- [svg arc animation (partial)](https://gist.github.com/endeavor85/c8528d8bb5ef10dca8b2)
+  - needs [arc attrTween](http://bl.ocks.org/mbostock/5100636)
+- [svg arc animation (partial)](https://gist.github.com/endeavor85/c8528d8bb5ef10dca8b2)
