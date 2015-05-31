@@ -11,6 +11,6 @@ live at [drassenov.com](http://drassenov.com)
 
 ### gists
 
-- [svg arc animation (partial)](https://gist.github.com/endeavor85/c8528d8bb5ef10dca8b2)
-  - needs [arc attrTween](http://bl.ocks.org/mbostock/5100636)
-- [svg arc animation (partial)](https://gist.github.com/endeavor85/c8528d8bb5ef10dca8b2)
+- [LSSS live JPL data (partial)](https://gist.github.com/endeavor85/336b5c24f72100b3ee88)
+  - [svg arc animation (partial)](https://gist.github.com/endeavor85/c8528d8bb5ef10dca8b2)
+    - needs [arc attrTween](http://bl.ocks.org/mbostock/5100636)
