@@ -17,5 +17,13 @@ live at [drassenov.com](http://drassenov.com)
     - partial version working [here](https://gist.github.com/endeavor85/edca8a3f52c14b5b6b55)
 
 - [Randy testing orbit plotting] (https://github.com/rosalesr/lsss_d3_testing)
-  - need to integrate in Travis' JPL Horizon's query set to dynamically pull the data
-  - need to dynamically create all graphics nased on Horizon's query
+  - based on D3 example here: http://palerdot.github.io/moon-phase-visualizer/d3-moon-viz.html
+  - another good example: http://d3shooter.herokuapp.com/
+  - and another...: http://nbremer.github.io/exoplanets/
+  
+  Todo: 
+  - need to integrate in JPL Horizon's query set to dynamically pull the orbit dataset
+  - need to dynamically create all graphics based on that dataset
+  - need to integrate popup info and mouse-over actions
+  - need to integrate mouse controls for pan and zoom
+  
