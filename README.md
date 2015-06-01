@@ -16,4 +16,6 @@ live at [drassenov.com](http://drassenov.com)
     - needs [arc attrTween](http://bl.ocks.org/mbostock/5100636)
     - partial version working [here](https://gist.github.com/endeavor85/edca8a3f52c14b5b6b55)
 
--[Randy testing orbit plotting] (https://github.com/rosalesr/lsss_d3_testing)
+- [Randy testing orbit plotting] (https://github.com/rosalesr/lsss_d3_testing)
+  - need to integrate in Travis' JPL Horizon's query set to dynamically pull the data
+  - need to dynamically create all graphics nased on Horizon's query
