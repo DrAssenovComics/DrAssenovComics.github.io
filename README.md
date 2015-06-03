@@ -27,3 +27,6 @@ live at [drassenov.com](http://drassenov.com)
   - need to integrate popup info and mouse-over actions
   - need to integrate mouse controls for pan and zoom
   
+### demo
+
+- [Halo Hover](https://github.com/DrAssenovComics/DrAssenovComics.github.io/blob/master/demo/halo-hover.html) ([demo](drassenov.com/demo/halo-hover.html))
