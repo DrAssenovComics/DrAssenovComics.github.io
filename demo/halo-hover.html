@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<!-- https://css-tricks.com/svg-line-animation-works/ 
+var path = document.querySelector('.path');
+var length = path.getTotalLength();
+-->
+<body>
+
+<style>
+g.group .target {
+  fill: #000;
+}
+
+g.group .target:hover + .halo {
+  animation-name: drawhalo;
+  animation-duration: .5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: forwards;
+  stroke-dashoffset: 0;
+}
+
+g.group path {
+  stroke: #00f;
+  stroke-width: 4;
+}
+
+.halo {
+  fill: none;
+  stroke-dasharray: 1150;
+  stroke-dashoffset: -1150;
+}
+
+@keyframes drawhalo {
+  from {
+    stroke-dashoffset: -1150;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+</style>
+<h2>Hover over the dot</h2>
+<svg width=800 height=800>
+<g class="group">
+<circle class="target" cx="190" cy="340" r="80"/>
+<path class="halo"
+      d="
+        M 50, 0
+        l 0, 200
+        l 40, 40
+        a 100,100 0 1,0 200,200
+        a 100,100 0 1,0 -200,-200
+        "
+  />
+</g>
+</svg>
+
+</body>
