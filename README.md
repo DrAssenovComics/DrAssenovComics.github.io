@@ -29,4 +29,4 @@ live at [drassenov.com](http://drassenov.com)
   
 ### demo
 
-- [Halo Hover](https://github.com/DrAssenovComics/DrAssenovComics.github.io/blob/master/demo/halo-hover.html) ([demo](drassenov.com/demo/halo-hover.html))
+- [Halo Hover](https://github.com/DrAssenovComics/DrAssenovComics.github.io/blob/master/demo/halo-hover.html) ([demo](http://www.drassenov.com/demo/halo-hover.html))
