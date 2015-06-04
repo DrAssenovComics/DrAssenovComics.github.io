@@ -20,10 +20,9 @@ live at [drassenov.com](http://drassenov.com)
   - based on D3 example here: http://palerdot.github.io/moon-phase-visualizer/d3-moon-viz.html
   - another good example: http://d3shooter.herokuapp.com/
   - and another...: http://nbremer.github.io/exoplanets/
+  - and the astertrak website itself has a visualization!? that is neato...but not general purpose enough for Mars-centric mission architecture 
   
   Todo: 
-  - need to integrate in JPL Horizon's query set to dynamically pull the orbit dataset
-  - need to dynamically create all graphics based on that dataset
   - need to integrate popup info and mouse-over actions
   - need to integrate mouse controls for pan and zoom
   
