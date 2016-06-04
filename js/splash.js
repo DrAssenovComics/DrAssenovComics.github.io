@@ -20,7 +20,7 @@ $(document).ready(function(){
 		
 		image = new Image();
 		//image.src = "images/main_bg_files/earth2BIG.jpg";
-		image.src = "images/main_bg_files/earth2BIG3.png";
+		image.src = "https://s3.amazonaws.com/cdn.drassenov.com/img/splash/earth2BIG3.png";
 		// 4800
 		// 2700
 		
