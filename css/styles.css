@@ -1,0 +1,194 @@
+
+/*background animations
+@keyframes main_keyframes{
+	
+   0% {
+		background-image: url("../images/main_bg_files/starry_clouds1.png");
+		background-size: 1200px 900px;
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+	}
+	
+    33%  	{
+		background-image: url("../images/main_bg_files/starry_clouds2.png");
+		background-size: 1200px 900px;
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+	}
+	
+    66% 	{
+		background-image: url("../images/main_bg_files/starry_clouds3.png");
+		background-size: 1200px 900px;
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+	}
+	
+	100% {
+		background-image: url("../images/main_bg_files/starry_clouds1.png");
+		background-size: 1200px 900px;
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+	}
+}
+*/
+
+#main{
+
+	width: 100%;
+	background-image: url("../images/main_bg_files/starry_base.png");
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	
+	padding-bottom: 100px;
+	
+	min-height: 800px;
+}
+
+#footer{
+	padding-top: 25px;
+	margin: 0 auto -4em;
+	padding-bottom: 25px;
+}
+
+body{ 
+	padding-bottom: 50px; 
+	/* overflow-x: hidden; */
+}
+
+#main{
+	padding-bottom: 100px;
+	
+	
+}
+
+.well{
+	background-color: #FFA500;
+	/* padding: 20px; */
+	/* margin: 20px; */
+}
+
+
+ .h1 > .heading_white{
+	align: right;
+	text-color: white;
+}
+
+.slick-slide .image{
+	padding:10px;
+	outline: 0;
+
+}
+.slick-slide img:hover {
+
+	/*box-shadow: 10px 10px 10px #ccc;*/
+	box-shadow:0 0 30px #ff0ab9;
+}
+
+.slick-slide img:active {
+
+	/*box-shadow: 10px 10px 10px #ccc;*/
+	box-shadow:0 0 30px #ff0ab9;
+}
+
+.slider-for img{
+	border:10px solid #FFF;
+	display:block;
+	width:100%;
+}
+
+.slider-nav img{
+	border:none;
+	padding:1px;
+	display:block;
+	width:90%; 
+	/* width: 100px; */
+	margin-top: 15px;
+	margin-right: auto;
+	margin-bottom: 15px;
+	margin-left: auto;
+}
+
+.slider-nav img:focus{
+	border: none;
+}
+
+.slider-nav {
+	padding:50px;
+
+}
+
+.slick-slide img.slick-loading{
+	border:0; 
+}
+
+.slick-slider{
+	margin: 0;
+}
+
+.center .slick-center h3{
+	-moz-transform:scale(1);
+	-ms-transform:scale(1);
+	-o-transform:scale(1);
+	-webkit-transform:scale(1);
+	color:#e67e22;
+	opacity:1;
+	transform:scale(1);
+
+	
+.variable-width .slick-slide p { 
+	background: #fff; 
+	height: 100px; 
+	color:#3498db;
+	color:#000000;	
+	margin: 5px; 
+	line-height: 100px; 
+}
+
+
+
+#my-thumbnails:focus div {
+  color: #ffffff;
+}
+
+
+.vertical-center {
+	min-height: 100%;  /* Fallback for vh unit */
+	min-height: 100vh; /* You might also want to use
+						'height' property instead.
+						
+						Note that for percentage values of
+						'height' or 'min-height' properties,
+						the 'height' of the parent element
+						should be specified explicitly.
+
+						In this case the parent of '.vertical-center'
+						is the <body> element */
+
+	/* Make it a flex container */
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex; 
+
+	/* Align the bootstrap's container vertically */
+	-webkit-box-align : center;
+	-webkit-align-items : center;
+	   -moz-box-align : center;
+	   -ms-flex-align : center;
+		  align-items : center;
+
+	/* In legacy web browsers such as Firefox 9
+	 we need to specify the width of the flex container */
+	width: 100%;
+
+	/* Also 'margin: 0 auto' doesn't have any effect on flex items in such web browsers
+	 hence the bootstrap's container won't be aligned to the center anymore.
+
+	 Therefore, we should use the following declarations to get it centered again */
+		 -webkit-box-pack : center;
+			-moz-box-pack : center;
+			-ms-flex-pack : center;
+	-webkit-justify-content : center;
+		  justify-content : center;
+}
