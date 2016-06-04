@@ -80,13 +80,13 @@ $(document).ready(function(){
 		posx = pos.x;
 		posy = pos.y;
 		
-		console.log(pos);
+		//console.log(pos);
 		
 		posx = posx - bgcanvas.width/2;
 		posy = posy - bgcanvas.height/2;
 		
-		console.log(posx);
-		console.log(posy);
+		//console.log(posx);
+		//console.log(posy);
 		
 		bgcanvas.style.top  = -posy * 0.015 + "px";
 		bgcanvas.style.left = -posx * 0.015 + "px";
