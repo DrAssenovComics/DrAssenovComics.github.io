@@ -67,16 +67,18 @@ body{
 	/* margin: 20px; */
 }
 
-
- .h1 > .heading_white{
+.h1 > .heading_white{
 	align: right;
 	text-color: white;
 }
 
-.slick-slide .image{
+.navbar-brand > img {
+	margin-top: -9px;
+}
+
+.slick-slide .image {
 	padding:10px;
 	outline: 0;
-
 }
 .slick-slide img:hover {
 
