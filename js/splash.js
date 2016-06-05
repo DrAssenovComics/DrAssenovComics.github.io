@@ -1,22 +1,18 @@
 
 $(document).ready(function(){
 
-	var bgcanvas;
-	var context;
+	var bgcanvas = document.getElementById("bgCanvas");
+	var context = bgcanvas.getContext("2d");
 	var image;
-
-	var main;
+		
+	var main = document.getElementById("splash-content");
 	
 	var opacity = 0.1;
 	var timerid;
 
 	function drawbg(){
 	
-		bgcanvas = document.getElementById("bgCanvas");
-		context = bgcanvas.getContext("2d");
 		context.globalCompositeOperation = "source-over";
-		
-		main = document.getElementById("main");
 		
 		image = new Image();
 		//image.src = "images/main_bg_files/earth2BIG.jpg";
@@ -54,7 +50,6 @@ $(document).ready(function(){
 	function fadeinbg(){
 		
 		opacity += 0.01;
-		
 			
 		context.drawImage(image, 0, 0, bgcanvas.width, bgcanvas.height);
 
