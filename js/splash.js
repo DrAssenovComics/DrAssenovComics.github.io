@@ -40,7 +40,7 @@ $(document).ready(function(){
 			var iheight = image.height;
 			var iwidht = image.width;
 			
-			context.drawImage(image, 720, 405, 1920, 1080, 0, 0, bgcanvas.height + 25, bgcanvas.width + 25);
+			context.drawImage(image, 0, 0, 1920, 1080, -50, -50, bgcanvas.height, bgcanvas.width);
 		}
 		
 		context.globalAlpha = opacity;
@@ -83,8 +83,8 @@ $(document).ready(function(){
 		//console.log(posx);
 		//console.log(posy);
 		
-		bgcanvas.style.top  = -200 -posy * 0.015 + "px";
-		bgcanvas.style.left = -200 -posx * 0.015 + "px";
+		bgcanvas.style.top  = -10 -posy * 0.015 + "px";
+		bgcanvas.style.left = -10 -posx * 0.015 + "px";
 
 	}
 	window.addEventListener('mousemove', draw, false);
