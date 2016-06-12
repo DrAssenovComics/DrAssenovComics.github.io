@@ -83,8 +83,8 @@ $(document).ready(function(){
 		//console.log(posx);
 		//console.log(posy);
 		
-		bgcanvas.style.top  = -posy * 0.015 + "px";
-		bgcanvas.style.left = -posx * 0.015 + "px";
+		bgcanvas.style.top  = -200 -posy * 0.015 + "px";
+		bgcanvas.style.left = -200 -posx * 0.015 + "px";
 
 	}
 	window.addEventListener('mousemove', draw, false);
