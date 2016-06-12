@@ -198,8 +198,8 @@ body{
 
 
 
-#my-thumbnails:focus div {
-  color: #ffffff;
+#my-thumbnails:focus{
+  border: none;
 }
 
 
