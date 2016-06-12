@@ -198,10 +198,13 @@ body{
 
 
 
-#my-thumbnails:focus{
+#my-thumbnails: focus{
   border: none;
 }
 
+#my-thumbnails: active{
+  border: none;
+}
 
 .vertical-center {
 	min-height: 100%;  /* Fallback for vh unit */
