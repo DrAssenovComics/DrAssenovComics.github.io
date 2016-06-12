@@ -1,8 +1,8 @@
 .slick-prev {
-    left: -50px;
+    left: -15px;
 }
 .slick-next {
-    right: -20px;
+    right: 10px;
 }
 .slick-prev, .slick-next {
     background: none;
