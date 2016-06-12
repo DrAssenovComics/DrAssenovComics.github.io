@@ -23,15 +23,15 @@ $(document).ready(function(){
 		//bgcanvas.height = window.screen.height;
 		//bgcanvas.width = window.screen.width;
 		
-		bgcanvas.height = window.screen.height;
-		bgcanvas.width = window.screen.width;
+		bgcanvas.height = window.screen.height + 25;
+		bgcanvas.width = window.screen.width + 25;
 		
 		if(bgcanvas.height < 600){
-			bgcanvas.height = 600;
+			bgcanvas.height = 625;
 		}
 		
 		if(bgcanvas.width < 800){
-			bgcanvas.width = 800;
+			bgcanvas.width = 825;
 		}
 		
 		image.onload = function() {		
