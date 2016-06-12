@@ -23,15 +23,15 @@ $(document).ready(function(){
 		//bgcanvas.height = window.screen.height;
 		//bgcanvas.width = window.screen.width;
 		
-		bgcanvas.height = window.screen.height + 25;
-		bgcanvas.width = window.screen.width + 25;
+		bgcanvas.height = window.screen.height;
+		bgcanvas.width = window.screen.width;
 		
 		if(bgcanvas.height < 600){
-			bgcanvas.height = 625;
+			bgcanvas.height = 600;
 		}
 		
 		if(bgcanvas.width < 800){
-			bgcanvas.width = 825;
+			bgcanvas.width = 800;
 		}
 		
 		image.onload = function() {		
@@ -40,7 +40,7 @@ $(document).ready(function(){
 			var iheight = image.height;
 			var iwidht = image.width;
 			
-			context.drawImage(image, 720, 405, 1920, 1080, 0, 0, bgcanvas.height, bgcanvas.width);
+			context.drawImage(image, 720, 405, 1920, 1080, 0, 0, bgcanvas.height + 25, bgcanvas.width + 25);
 		}
 		
 		context.globalAlpha = opacity;
