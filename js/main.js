@@ -1,5 +1,8 @@
 $(function(){
 	
+	//go setup the slick carousel objects
+	$(window).load(slick_init);
+	
 	var gotoSection = function(name) {
 		$('.navbar.hidden').removeClass('hidden');
 		
@@ -21,6 +24,11 @@ $(function(){
         var State = History.getState(); // Note: We are using History.getState() instead of event.state
 		
 		gotoSection(State.url.replace(/^.*\?/, ''));
+		
+		if(href == "comics-lonestar"){ //special case for comic page
+			slick_workaround();
+		}
+		
     });
 	
 	$('.ajax-link').click(function() {
@@ -31,8 +39,14 @@ $(function(){
 		var title = $link.data('title');
 		
         if (!$link.hasClass("active")) {
+			
 			History.pushState(null,title,"?" + href);
 			gotoSection(href);
+		
+			if(href == "comics-lonestar"){ //special case for comic page
+				slick_workaround();
+			}
+			
 		}
 		
         return false;
@@ -40,7 +54,15 @@ $(function(){
 	
     var href = window.location.search.replace(/^\?/, '');
 	
-	if(href)
+	if(href){
+		
 		gotoSection(href);
+		
+		if(href == "comics-lonestar"){ //special case for comic page
+			slick_workaround();
+		}
+	}
+	
+
 
 });

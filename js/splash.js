@@ -1,5 +1,5 @@
 
-$(document).ready(function(){
+$(function(){
 
 	var bgcanvas = document.getElementById("bgCanvas");
 	var context = bgcanvas.getContext("2d");
@@ -61,7 +61,6 @@ $(document).ready(function(){
 		if(opacity > 1.0){
 			clearInterval(timerid);
 		}
-
 
 	};
 
