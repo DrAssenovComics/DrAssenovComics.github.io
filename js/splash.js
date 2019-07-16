@@ -53,7 +53,7 @@ $(function(){
 			
 		context.drawImage(image, 0, 0, bgcanvas.width, bgcanvas.height);
 
-		main.style.opacity = opacity * 4.0;
+		//main.style.opacity = opacity * 4.0;
 		
 		context.globalAlpha = opacity; 
 		//console.log(context.globalAlpha);
